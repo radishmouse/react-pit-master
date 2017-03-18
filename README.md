@@ -1,9 +1,19 @@
 
+# TODO:
 
-ok, we're just gonna do pitmaster as the jazzon talk example
-
-
-so, refer to the drawings
+- make temperature togglable on click between F and C
+  - create a utils .js for F <-> C conversion
+- create a global config that has:
+  - target temps for meats, fish, veggies
+  - oven temp upper/lower bounds
+- dropdown choices should be based on config (for food choices)
+- need a testValues.js that will generate temperatures
+  - also a way to fluctuate the temperature of the oven
+    - like, it goes up a little or down a little
+    - no, it doesn't have to affect meat temp, but that would be clever
+- need color variation (red, green)
+  - maybe have a color-blind mode?
+  - or theme selector?
 
 
 
