@@ -3,8 +3,6 @@ import FoodChooser from '../containers/FoodChooser';
 import NameLabel from '../containers/NameLabel';
 
 
-import {FOOD_CHOICES} from '../testValues';
-
 // aha!
 // i need state here, because...
 // we have more than one thing that can change
@@ -29,7 +27,7 @@ import {FOOD_CHOICES} from '../testValues';
 class FoodChooserForm extends React.Component {
   constructor(props) {
     super(props);
-    this.foodChoices = props.foodChoices || FOOD_CHOICES;
+    this.foodChoices = props.foodChoices || [];
     this.submitHandler = props.submitHandler;
 
     // maintain the current name and food choice
@@ -48,7 +46,8 @@ class FoodChooserForm extends React.Component {
         changeHandler={this._updateOrderName}
       />
       <FoodChooser
-        foodChoices={FOOD_CHOICES}
+        currentChoice={this.state.foodChoice}
+        foodChoices={this.foodChoices}
         changeHandler={this._updateFoodChoice}
       />
       <input type="submit" />
@@ -71,6 +70,10 @@ class FoodChooserForm extends React.Component {
     e.preventDefault();
     console.log(this.state);
     this.submitHandler(this.state);
+    this.setState({
+      orderName: '',
+      foodChoice: ''
+    });
   }
 }
 

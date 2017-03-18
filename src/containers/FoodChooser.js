@@ -1,5 +1,4 @@
 import React from 'react';
-import {FOOD_CHOICES} from '../testValues';
 
 /*
 example of an uncontrolled component
@@ -7,7 +6,8 @@ i'm not sure if we even need to accept a value?
 */
 
 const FoodChooser = ({
-  foodChoices=FOOD_CHOICES,
+  currentChoice='',
+  foodChoices=[],
   changeHandler=(v) => v
 }) => {
 
@@ -24,6 +24,7 @@ const FoodChooser = ({
     <select 
       name="foodChoice" 
       onChange={(e) => changeHandler(_optionFrom(e))}
+      value={currentChoice}
     >
       <option value="">Choose One</option>
       {options}

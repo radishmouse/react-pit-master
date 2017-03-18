@@ -9,6 +9,8 @@ import Monitor from '../containers/Monitor';
 import FoodChooser from '../containers/FoodChooser';
 import FoodChooserForm from '../components/FoodChooserForm';
 
+import {FOOD_CHOICES} from '../testValues';
+
 // storiesOf('Welcome', module)
 //   .add('to Storybook', () => (
 //     <Welcome showApp={linkTo('Button')}/>
@@ -17,6 +19,7 @@ import FoodChooserForm from '../components/FoodChooserForm';
 storiesOf('FoodChooserForm', module)
   .add('from config', () => (
     <FoodChooserForm 
+      foodChoices={FOOD_CHOICES}
       submitHandler={(v) => console.log(`story for food chooser received: ${v}`)}
     />
   ));
