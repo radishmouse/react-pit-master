@@ -5,12 +5,16 @@ import Readout from './Readout';
 
 const Monitor = ({
   name,
+  food,
   changeHandler,
   foodTemperature,
   historyArray,
   ovenTemperature
 }) => (
   <div>
+    <NameLabel 
+      name={`${food} for: `} 
+    />
     <NameLabel 
       name={name} 
       changeHandler={changeHandler}
