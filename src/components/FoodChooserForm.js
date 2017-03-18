@@ -24,6 +24,11 @@ import NameLabel from '../containers/NameLabel';
 );
 */
 
+const _blankState = () => ({
+  orderName: '',
+  foodChoice: ''
+});
+
 class FoodChooserForm extends React.Component {
   constructor(props) {
     super(props);
@@ -32,10 +37,7 @@ class FoodChooserForm extends React.Component {
 
     // maintain the current name and food choice
     // before submitting
-    this.state = {
-      orderName: '',
-      foodChoice: ''
-    };
+    this.state = _blankState();
   }
 
   render() {
@@ -44,6 +46,7 @@ class FoodChooserForm extends React.Component {
         name={this.state.orderName}
         placeholder="Who's order is this?"
         changeHandler={this._updateOrderName}
+        getRef={(r) => this.nameField = r}
       />
       <FoodChooser
         currentChoice={this.state.foodChoice}
@@ -70,10 +73,8 @@ class FoodChooserForm extends React.Component {
     e.preventDefault();
     console.log(this.state);
     this.submitHandler(this.state);
-    this.setState({
-      orderName: '',
-      foodChoice: ''
-    });
+    this.setState(_blankState());
+    this.nameField.focus();
   }
 }
 

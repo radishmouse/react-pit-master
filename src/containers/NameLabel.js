@@ -10,13 +10,15 @@ associated with this "order"
 const NameLabel = ({
   name, 
   changeHandler, 
-  placeholder=''
+  placeholder='',
+  getRef
 }) => (
   <input
     type="text"
     value={name}
     placeholder={placeholder}
     onChange={(e) => changeHandler(_valueFrom(e))}
+    ref={getRef}
   />
 );
 
