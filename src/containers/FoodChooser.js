@@ -13,10 +13,10 @@ const FoodChooser = ({
 
   const options = foodChoices.map((choice, i) => (
     <option 
-      key={choice.name} 
-      value={choice.name}
+      key={choice} 
+      value={choice}
     >
-      {choice.name.toUpperCase()}
+      {choice.toUpperCase()}
     </option>
   ));
 

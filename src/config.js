@@ -13,37 +13,52 @@
 // maybe the app should pass in an array of objects with an id and name
 
 
-const FOOD_CHOICES = [
-  {
-    name: 'brisket',
+const RECIPES = {
+  'brisket': {
     target: 205,
-    oven: 250
+    oven: 250,
+    factor: 0.003
   },
-  {
-    name: 'ribs',
+  'ribs': {
     target: 160,
-    oven: 275
+    oven: 275,
+    factor: 0.013
   },
-  {
-    name: 'wings',
+  'wings': {
     target: 165,
     oven: 300,
+    factor: 0.079
   },
-  {
-    name: 'veggie burger',
+  'veggie burger': {
     target: 130,
-    oven: 300
+    oven: 300,
+    factor: 0.109
   },
-  {
-    name: 'portobello',
+  'portobello': {
     target: 130,
-    oven: 280
+    oven: 280,
+    factor: 0.199
   },
-  {
-    name: 'tempeh',
+  'tempeh': {
     target: 130,
-    oven: 280
+    oven: 280,
+    factor: 0.18
   },
-];
+};
 
-export { FOOD_CHOICES };
+const FOOD_CHOICES = Object.keys(RECIPES);
+
+const tempsForFood = (key) => ({
+  target: RECIPES[key].target,
+  oven: RECIPES[key].oven
+});
+const cookFactorForFood = (key) => RECIPES[key].factor;
+
+const ROOM_TEMP = 65;
+
+export { 
+  FOOD_CHOICES, 
+  tempsForFood,
+  cookFactorForFood,
+  ROOM_TEMP
+};
