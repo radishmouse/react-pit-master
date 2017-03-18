@@ -3,7 +3,12 @@ import React from 'react';
 import FoodChooserForm from './FoodChooserForm';
 import Monitor from '../containers/Monitor';
 
-import {FOOD_CHOICES} from '../testValues';
+import {
+  FOOD_CHOICES, 
+  tempsForFood,
+  cookFactorForFood,
+  ROOM_TEMP
+} from '../config';
 
 import {
   cookFood,
@@ -48,9 +53,10 @@ class PitMaster extends React.Component {
           <Monitor 
             key={order.id}
             name={`${order.orderName}`}
+            food={order.foodChoice}
             foodTemperature={order.current}
             historyArray={order.history} 
-            ovenTemperature={240.3}
+            ovenTemperature={tempsForFood(order.foodChoice).oven}
           />
         ))}
       </div>
@@ -59,7 +65,7 @@ class PitMaster extends React.Component {
 
   _addOrder = (order) => {
     order.id = (new Date()).getTime();
-    order.sensor = new Sensor(cookFood(70, 260), () => {// these vals will come from config
+    order.sensor = new Sensor(cookFood(ROOM_TEMP, tempsForFood(order.foodChoice).oven, cookFactorForFood(order.foodChoice)), () => {
       this._updateTemperatures(order.id)
     });  
     console.log(order);
