@@ -49,7 +49,6 @@ class FoodChooserForm extends React.Component {
       />
       <FoodChooser
         foodChoices={FOOD_CHOICES}
-        curentChoice={this.state.foodChoice}
         changeHandler={this._updateFoodChoice}
       />
       <input type="submit" />
