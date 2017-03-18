@@ -13,13 +13,15 @@ const NameLabel = ({
   placeholder='',
   getRef
 }) => (
-  <input
-    type="text"
-    value={name}
-    placeholder={placeholder}
-    onChange={(e) => changeHandler(_valueFrom(e))}
-    ref={getRef}
-  />
+  typeof changeHandler === 'function' ?
+    <input
+      type="text"
+      value={name}
+      placeholder={placeholder}
+      onChange={(e) => changeHandler(_valueFrom(e))}
+      ref={getRef}
+    />
+  : <span>{name}</span>
 );
 
 const _valueFrom = (e) => {

@@ -40,7 +40,6 @@ class PitMaster extends React.Component {
           <Monitor 
             key={order.id}
             name={`${order.orderName}`}
-            changeHandler={(newName) => this._updateOrderName(order.id, newName)}
             foodTemperature={80.1}
             valueArray={[79.8, 77.2, 70.9]} 
             ovenTemperature={240.3}
@@ -62,7 +61,7 @@ class PitMaster extends React.Component {
     this.setState({
       orders: this.state.orders.map((order) => (
         order.id === id ? {...order, orderName: newName}
-                          : order
+                        : order
 
       ))
     })
