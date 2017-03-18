@@ -9,12 +9,14 @@ import Monitor from '../containers/Monitor';
 import FoodChooser from '../containers/FoodChooser';
 import FoodChooserForm from '../components/FoodChooserForm';
 
+import PitMaster from '../components/PitMaster';
+
 import {FOOD_CHOICES} from '../testValues';
 
-// storiesOf('Welcome', module)
-//   .add('to Storybook', () => (
-//     <Welcome showApp={linkTo('Button')}/>
-//   ));
+storiesOf('PitMaster App', module)
+  .add('from config', () => (
+    <PitMaster />
+  ));
 
 storiesOf('FoodChooserForm', module)
   .add('from config', () => (
