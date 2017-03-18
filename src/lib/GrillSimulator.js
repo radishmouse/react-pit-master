@@ -21,10 +21,11 @@ function * cookFood (foodTemp, ovenTemp) {
 }
 
 class Sensor {
-  constructor(sampleGenerator, interval=1000) {
+  constructor(sampleGenerator, updateCallback, interval=1000) {
     this.values = [];
     this.sampleGenerator = sampleGenerator;
     this.sampleInterval = null;
+    this.updateCallback = updateCallback;
     this.interval = interval;
   }
 
@@ -32,6 +33,9 @@ class Sensor {
     let val = this.sampleGenerator.next().value;
     // console.log(`sampled ${val}`);
     this.values.push(val);
+    if (this.updateCallback) {
+      this.updateCallback();
+    }
   }
 
   start() {
@@ -58,9 +62,13 @@ class Sensor {
     return index >= 0 ? this.values[index] : '--'
   }
 
+  current() {
+    return this.values[this.values.length-1];
+  }
+
 }
 
-module.exports = {
+export {
   cookFood,
   Sensor
-};
+}
