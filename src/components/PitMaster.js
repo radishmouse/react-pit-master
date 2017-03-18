@@ -5,6 +5,20 @@ import Monitor from '../containers/Monitor';
 
 import {FOOD_CHOICES} from '../testValues';
 
+
+/*
+
+might be nice to move the monitors collection
+to their own component
+that has the ability to sort and filter
+
+potentially, this could be expanded to have
+a detail view that is routed to
+
+and the filtered views could be their own route
+
+*/
+
 class PitMaster extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +30,7 @@ class PitMaster extends React.Component {
   render() {
     return (
       <div>
-        <h1>PitMaster, yo</h1>
+        <h1>PitMaster</h1>
         <FoodChooserForm 
           foodChoices={FOOD_CHOICES}
           submitHandler={this._addOrder}
@@ -25,7 +39,7 @@ class PitMaster extends React.Component {
         {this.state.orders.map((order) => (
           <Monitor 
             key={order.id}
-            name={`${order.orderName}: ${order.foodChoice}`}
+            name={`${order.orderName}`}
             changeHandler={(newName) => this._updateOrderName(order.id, newName)}
             foodTemperature={80.1}
             valueArray={[79.8, 77.2, 70.9]} 
@@ -47,8 +61,8 @@ class PitMaster extends React.Component {
   _updateOrderName = (id, newName) => {
     this.setState({
       orders: this.state.orders.map((order) => (
-        order.id === id ? Object.assign({}, order, {orderName: newName})
-                               : order
+        order.id === id ? {...order, orderName: newName}
+                          : order
 
       ))
     })
