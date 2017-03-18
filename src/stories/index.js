@@ -6,12 +6,18 @@ import TemperatureHistory from '../containers/TemperatureHistory';
 import NameLabel from '../containers/NameLabel';
 import Monitor from '../containers/Monitor';
 
+import FoodChooser from '../containers/FoodChooser';
+
 // storiesOf('Welcome', module)
 //   .add('to Storybook', () => (
 //     <Welcome showApp={linkTo('Button')}/>
 //   ));
 
 
+storiesOf('FoodChooser', module)
+  .add('from config', () => (
+    <FoodChooser />
+  ));
 storiesOf('Monitor', module)
   .add('static values', () => (
     <Monitor 
