@@ -18,6 +18,7 @@ storiesOf('FoodChooser', module)
   .add('from config', () => (
     <FoodChooser />
   ));
+
 storiesOf('Monitor', module)
   .add('static values', () => (
     <Monitor 
