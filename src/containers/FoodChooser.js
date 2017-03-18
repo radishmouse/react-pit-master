@@ -1,50 +1,23 @@
 import React from 'react';
-
-// move this to a global config
-// because foodchooser does not necessarily need
-// to know the min/max/target temps per food
-
-const FOOD_CHOICES = [
-  {
-    name: 'brisket'
-  },
-  {
-    name: 'ribs'
-  },
-  {
-    name: 'wings'
-  },
-  {
-    name: 'veggie burger'
-  },
-  {
-    name: 'portobello'
-  },
-  {
-    name: 'tempeh'
-  },
-  {
-    name: 'oyster'
-  },
-  {
-    name: 'tuna'
-  },
-  {
-    name: 'calamari'
-  },
-]
-
-const options = FOOD_CHOICES.map((choice, i) => (
-  <option value={choice.name}>{choice.name.toUpperCase()}</option>
-));
+import {FOOD_CHOICES} from '../testValues';
 
 const FoodChooser = ({
+  currentChoice,
+  foodChoices=FOOD_CHOICES,
   changeHandler=(v) => v
-}) => (
-  <select name="foodChoice" onChange={(e) => changeHandler(_optionFrom(e))}>
-    {options}
-  </select>
-);
+}) => {
+
+  const options = foodChoices.map((choice, i) => (
+    <option key={choice.name} value={choice.name}>{choice.name.toUpperCase()}</option>
+  ));
+
+  return (
+    <select name="foodChoice" onChange={(e) => changeHandler(_optionFrom(e))}>
+      <option value={currentChoice}>{currentChoice}</option>
+      {options}
+    </select>
+  );
+};
 
 const _optionFrom = (e) => {
   let val = e.target.value;
