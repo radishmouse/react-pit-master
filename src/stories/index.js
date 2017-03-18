@@ -3,11 +3,20 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 
 import Readout from '../containers/Readout';
 import TemperatureHistory from '../containers/TemperatureHistory';
+import NameLabel from '../containers/NameLabel';
 
 // storiesOf('Welcome', module)
 //   .add('to Storybook', () => (
 //     <Welcome showApp={linkTo('Button')}/>
 //   ));
+
+storiesOf('NameLabel', module)
+  .add('static text', () => (
+    <NameLabel 
+      name={'static text'}
+      changeHandler={action('NameLabel')}
+    />
+  ));
 
 storiesOf('TemperatureHistory', module)
   .add('with defaults', () => (
