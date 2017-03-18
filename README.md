@@ -13,3 +13,6 @@ Primary interface is React Storybook, which you run via: `npm storybook` or `yar
 
 Then, if your browser is not opened for you, go to [localhost:9009](http://localhost:9009)
 to view the storybook.
+
+Alternatively, run `npm start` or `yarn start`, which should open your browser to
+[localhost:3000](http://localhost:3000).
