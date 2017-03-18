@@ -1,23 +1,18 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import Button from './Button';
-import Welcome from './Welcome';
-import App from '../App';
 
-storiesOf('Welcome', module)
-  .add('to Storybook', () => (
-    <Welcome showApp={linkTo('Button')}/>
-  ));
+import Readout from '../containers/Readout';
 
-storiesOf('App', module)
-  .add('with generic spinner', () => (
-    <App />
-  ));
+// storiesOf('Welcome', module)
+//   .add('to Storybook', () => (
+//     <Welcome showApp={linkTo('Button')}/>
+//   ));
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <Button onClick={action('clicked')}>Hello Button</Button>
+
+storiesOf('Readout', module)
+  .add('with default', () => (
+    <Readout />
   ))
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
+  .add('with prop', () => (
+    <Readout value={1} />
   ));

@@ -1,3 +1,15 @@
+
+
+ok, we're just gonna do pitmaster as the jazzon talk example
+
+
+so, refer to the drawings
+
+
+
+---
+
+
 # base
 
 - react
