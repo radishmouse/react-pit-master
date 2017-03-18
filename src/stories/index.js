@@ -7,12 +7,19 @@ import NameLabel from '../containers/NameLabel';
 import Monitor from '../containers/Monitor';
 
 import FoodChooser from '../containers/FoodChooser';
+import FoodChooserForm from '../components/FoodChooserForm';
 
 // storiesOf('Welcome', module)
 //   .add('to Storybook', () => (
 //     <Welcome showApp={linkTo('Button')}/>
 //   ));
 
+storiesOf('FoodChooserForm', module)
+  .add('from config', () => (
+    <FoodChooserForm 
+      submitHandler={(v) => console.log(`story for food chooser received: ${v}`)}
+    />
+  ));
 
 storiesOf('FoodChooser', module)
   .add('from config', () => (
