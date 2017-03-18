@@ -8,14 +8,15 @@ it should incrementally increase food temp
 
 const COOK_FACTOR = 0.063; // fake percentage increase of difference
 
-const incrementFoodTemp = (foodTemp, ovenTemp) => {
-  return (foodTemp + ((ovenTemp - foodTemp) * COOK_FACTOR));
+const incrementFoodTemp = (factor) => (foodTemp, ovenTemp) => {
+  return (foodTemp + ((ovenTemp - foodTemp) * factor));
 }
 
-function * cookFood (foodTemp, ovenTemp) {
+function * cookFood (foodTemp, ovenTemp, factor=COOK_FACTOR) {
   console.log(`cooking: food: ${foodTemp.toFixed(2)}, oven: ${ovenTemp}`);
+  let cook = incrementFoodTemp(factor);
   while (foodTemp < ovenTemp) {
-    foodTemp = incrementFoodTemp(foodTemp, ovenTemp);
+    foodTemp = cook(foodTemp, ovenTemp);
     yield foodTemp;
   }
 }
