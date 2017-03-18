@@ -1,7 +1,10 @@
 
 # PitMaster
 
-This is an example React app built for JazzCon 2017
+This is an example React app built for JazzCon 2017.
+
+It inaccurately simulates cooking food while showing
+the current temperature, temperature history, and oven temperature.
 
 ## Installation
 
