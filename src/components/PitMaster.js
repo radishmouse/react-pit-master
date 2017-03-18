@@ -5,6 +5,10 @@ import Monitor from '../containers/Monitor';
 
 import {FOOD_CHOICES} from '../testValues';
 
+import {
+  cookFood,
+  Sensor
+} from '../lib/GrillSimulator';
 
 /*
 
@@ -27,6 +31,10 @@ class PitMaster extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.state.orders.forEach(({sensor}) => sensor.stop());
+  }
+
   render() {
     return (
       <div>
@@ -40,8 +48,8 @@ class PitMaster extends React.Component {
           <Monitor 
             key={order.id}
             name={`${order.orderName}`}
-            foodTemperature={80.1}
-            valueArray={[79.8, 77.2, 70.9]} 
+            foodTemperature={order.current}
+            historyArray={order.history} 
             ovenTemperature={240.3}
           />
         ))}
@@ -51,21 +59,43 @@ class PitMaster extends React.Component {
 
   _addOrder = (order) => {
     order.id = (new Date()).getTime();
+    order.sensor = new Sensor(cookFood(70, 260), () => {// these vals will come from config
+      this._updateTemperatures(order.id)
+    });  
     console.log(order);
     this.setState({
       orders: [...this.state.orders, order]
-    })
+    });
+    order.sensor.start();
   }
 
-  _updateOrderName = (id, newName) => {
+  _updateTemperatures = (id) => {
     this.setState({
       orders: this.state.orders.map((order) => (
-        order.id === id ? {...order, orderName: newName}
+        order.id === id ? {
+                            ...order, 
+                            current: order.sensor.current(),
+                            history: [
+                              order.sensor.minutesAgo(1),
+                              order.sensor.minutesAgo(5),
+                              order.sensor.minutesAgo(10),
+                            ]
+                          }
                         : order
 
       ))
     })
   }
+
+  // _updateOrderName = (id, newName) => {
+  //   this.setState({
+  //     orders: this.state.orders.map((order) => (
+  //       order.id === id ? {...order, orderName: newName}
+  //                       : order
+
+  //     ))
+  //   })
+  // }
 
 }
 
