@@ -7,10 +7,15 @@ as i type, it updates the "customer"
 associated with this "order"
 */
 
-const NameLabel = ({name, changeHandler}) => (
+const NameLabel = ({
+  name, 
+  changeHandler, 
+  placeholder=''
+}) => (
   <input
     type="text"
     value={name}
+    placeholder={placeholder}
     onChange={(e) => changeHandler(_valueFrom(e))}
   />
 );
