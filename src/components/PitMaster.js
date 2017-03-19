@@ -2,6 +2,7 @@ import React from 'react';
 
 import FoodChooserForm from './FoodChooserForm';
 import Monitor from '../containers/Monitor';
+import MonitorPanel from '../containers/MonitorPanel';
 
 import {
   FOOD_CHOICES, 
@@ -14,19 +15,6 @@ import {
   cookFood,
   Sensor
 } from '../lib/GrillSimulator';
-
-/*
-
-might be nice to move the monitors collection
-to their own component
-that has the ability to sort and filter
-
-potentially, this could be expanded to have
-a detail view that is routed to
-
-and the filtered views could be their own route
-
-*/
 
 class PitMaster extends React.Component {
   constructor(props) {
@@ -49,16 +37,16 @@ class PitMaster extends React.Component {
           submitHandler={this._addOrder}
         />
 
-        {this.state.orders.map((order) => (
-          <Monitor 
-            key={order.id}
-            name={order.orderName}
-            food={order.foodChoice}
-            foodTemperature={order.current}
-            historyArray={order.history} 
-            ovenTemperature={tempsForFood(order.foodChoice).oven}
-          />
-        ))}
+        <MonitorPanel orderArray={
+          this.state.orders.map((order) => ({
+            key: order.id,
+            name: order.orderName,
+            food: order.foodChoice,
+            foodTemperature: order.current,
+            historyArray: order.history,
+            ovenTemperature: tempsForFood(order.foodChoice).oven
+          }))
+        } />
       </div>
     );
   }
