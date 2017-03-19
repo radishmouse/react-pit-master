@@ -52,7 +52,7 @@ class PitMaster extends React.Component {
         {this.state.orders.map((order) => (
           <Monitor 
             key={order.id}
-            name={`${order.orderName}`}
+            name={order.orderName}
             food={order.foodChoice}
             foodTemperature={order.current}
             historyArray={order.history} 
@@ -65,10 +65,11 @@ class PitMaster extends React.Component {
 
   _addOrder = (order) => {
     order.id = (new Date()).getTime();
-    order.sensor = new Sensor(cookFood(ROOM_TEMP, tempsForFood(order.foodChoice).oven, cookFactorForFood(order.foodChoice)), () => {
-      this._updateTemperatures(order.id)
-    });  
-    console.log(order);
+    order.sensor = new Sensor(cookFood(ROOM_TEMP, 
+                                       tempsForFood(order.foodChoice).oven, 
+                                       cookFactorForFood(order.foodChoice)
+                                      ), 
+                              () => this._updateTemperatures(order.id));  
     this.setState({
       orders: [...this.state.orders, order]
     });
@@ -92,17 +93,6 @@ class PitMaster extends React.Component {
       ))
     })
   }
-
-  // _updateOrderName = (id, newName) => {
-  //   this.setState({
-  //     orders: this.state.orders.map((order) => (
-  //       order.id === id ? {...order, orderName: newName}
-  //                       : order
-
-  //     ))
-  //   })
-  // }
-
 }
 
 export default PitMaster;
