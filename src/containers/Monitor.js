@@ -6,10 +6,10 @@ import Readout from './Readout';
 const Monitor = ({
   name,
   food,
-  changeHandler,
   foodTemperature,
   historyArray,
-  ovenTemperature
+  ovenTemperature,
+  changeHandler
 }) => (
   <div>
     <NameLabel 
