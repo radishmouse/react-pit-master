@@ -11,7 +11,7 @@ import FoodChooserForm from '../components/FoodChooserForm';
 
 import PitMaster from '../components/PitMaster';
 
-import {FOOD_CHOICES} from '../testValues';
+import {FOOD_CHOICES} from '../config';
 
 storiesOf('PitMaster App', module)
   .add('from config', () => (
