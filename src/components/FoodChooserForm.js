@@ -2,6 +2,7 @@ import React from 'react';
 import FoodChooser from '../containers/FoodChooser';
 import NameLabel from '../containers/NameLabel';
 
+import './FoodChooserForm.css';
 
 // aha!
 // i need state here, because...
@@ -41,20 +42,22 @@ class FoodChooserForm extends React.Component {
   }
 
   render() {
-    return <form onSubmit={this._handleSubmit}>
-      <NameLabel
-        name={this.state.orderName}
-        placeholder="Who's order is this?"
-        changeHandler={this._updateOrderName}
-        getRef={(r) => this.nameField = r}
-      />
-      <FoodChooser
-        currentChoice={this.state.foodChoice}
-        foodChoices={this.foodChoices}
-        changeHandler={this._updateFoodChoice}
-      />
-      <input type="submit" />
-    </form>
+    return (
+      <form className="food-form" onSubmit={this._handleSubmit}>
+        <FoodChooser
+          currentChoice={this.state.foodChoice}
+          foodChoices={this.foodChoices}
+          changeHandler={this._updateFoodChoice}
+        />
+        <NameLabel
+          name={this.state.orderName}
+          placeholder="Who's order is this?"
+          changeHandler={this._updateOrderName}
+          getRef={(r) => this.nameField = r}
+        />
+        <input type="submit" />
+      </form>
+    );
   }
 
   _updateOrderName = (newName) => (

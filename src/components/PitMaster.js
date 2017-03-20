@@ -1,8 +1,11 @@
 import React from 'react';
 
+
 import FoodChooserForm from './FoodChooserForm';
 import Monitor from '../containers/Monitor';
 import MonitorPanel from '../containers/MonitorPanel';
+
+import './PitMaster.css';
 
 import {
   FOOD_CHOICES, 
@@ -13,7 +16,8 @@ import {
 
 import {
   cookFood,
-  Sensor
+  Sensor,
+  randomIntFromInterval
 } from '../lib/GrillSimulator';
 
 class PitMaster extends React.Component {
@@ -28,9 +32,56 @@ class PitMaster extends React.Component {
     this.state.orders.forEach(({sensor}) => sensor.stop());
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+
+    [
+        {
+          orderName: 'Mike',
+          foodChoice: 'ribs'
+        },
+        {
+          orderName: 'Carol',
+          foodChoice: 'brisket'
+        },
+        {
+          orderName: 'Alice',
+          foodChoice: 'veggie burger'
+        },
+        {
+          orderName: 'Greg',
+          foodChoice: 'wings'
+        },
+        {
+          orderName: 'Marcia',
+          foodChoice: 'tempeh'
+        },
+        {
+          orderName: 'Peter',
+          foodChoice: 'portobello'
+        },
+        {
+          orderName: 'Jan',
+          foodChoice: 'ribs'
+        },
+        {
+          orderName: 'Bobby',
+          foodChoice: 'wings'
+        },
+        {
+          orderName: 'cindy',
+          foodChoice: 'brisket'
+        },
+      ].forEach((o) => {
+        setTimeout(() => this._addOrder(o), 
+        randomIntFromInterval());
+      });
+    }, 1000)
+  }
+
   render() {
     return (
-      <div>
+      <div className="pitmaster">
         <h1>PitMaster</h1>
         <FoodChooserForm 
           foodChoices={FOOD_CHOICES}
@@ -52,6 +103,7 @@ class PitMaster extends React.Component {
   }
 
   _addOrder = (order) => {
+    console.log(order)
     order.id = (new Date()).getTime();
     order.sensor = new Sensor(cookFood(ROOM_TEMP, 
                                        tempsForFood(order.foodChoice).oven, 

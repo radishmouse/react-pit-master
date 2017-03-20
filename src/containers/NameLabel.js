@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './NameLabel.css';
+
 /*
 it's a controlled input.
 i, the pitmaster, can change the label.

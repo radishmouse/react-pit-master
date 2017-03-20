@@ -1,0 +1,21 @@
+
+.monitor {
+  border-radius: 6px;
+  background-color: slategray;
+  color: lightgrey;
+  flex: 0 1 auto;
+  width: 200px;
+  max-width: 200px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+}
+
+.push-right {
+  align-self: flex-end;
+}
+
+.center {
+  align-self: center;
+}

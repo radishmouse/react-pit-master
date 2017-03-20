@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 
+import '../index.css';
+
 import Readout from '../containers/Readout';
 import TemperatureHistory from '../containers/TemperatureHistory';
 import NameLabel from '../containers/NameLabel';
