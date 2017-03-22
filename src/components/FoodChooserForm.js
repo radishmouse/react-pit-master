@@ -3,6 +3,7 @@ import FoodChooser from '../containers/FoodChooser';
 import NameLabel from '../containers/NameLabel';
 
 import './FoodChooserForm.css';
+import create from './create-button.svg';
 
 // aha!
 // i need state here, because...
@@ -43,7 +44,8 @@ class FoodChooserForm extends React.Component {
 
   render() {
     return (
-      <form className="food-form" onSubmit={this._handleSubmit}>
+      <form className="foodForm" onSubmit={this._handleSubmit}>
+        <span className="foodFormLabel">New pit:</span>
         <FoodChooser
           currentChoice={this.state.foodChoice}
           foodChoices={this.foodChoices}
@@ -55,7 +57,7 @@ class FoodChooserForm extends React.Component {
           changeHandler={this._updateOrderName}
           getRef={(r) => this.nameField = r}
         />
-        <input type="submit" />
+        <input type="image" src={create} />
       </form>
     );
   }

@@ -26,7 +26,7 @@ const FoodChooser = ({
       onChange={(e) => changeHandler(_optionFrom(e))}
       value={currentChoice}
     >
-      <option value="">Choose One</option>
+      <option value="">Choose Meat</option>
       {options}
     </select>
   );

@@ -3,10 +3,10 @@ import React from 'react';
 import './MonitorPanel.css';
 import Monitor from './Monitor';
 
-const MonitorPanel = ({orderArray=[]}) => (
+const MonitorPanel = ({orderArray=[], closeHandler}) => (
   <div className="monitor-panel">
     {orderArray.map((order) => (
-      <Monitor {...order} />
+      <Monitor {...order} closeHandler={closeHandler} />
     ))}
   </div>
 );

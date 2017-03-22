@@ -3,26 +3,38 @@ import NameLabel from './NameLabel';
 import TemperatureHistory from './TemperatureHistory';
 import Readout from './Readout';
 
+import closeButton from './close.svg';
+import gradient from './gradient.svg';
 import './Monitor.css';
 
 const Monitor = ({
+  id,
   name,
   food,
   foodTemperature,
   historyArray,
   ovenTemperature,
-  changeHandler
+  changeHandler,
+  closeHandler
 }) => (
   <div className="monitor">
-    <NameLabel 
-      name={`${food} for: ${name}`} 
-    />
-    <div className="center">
-      <Readout className="large" value={foodTemperature} />
+    <div className="monitorHeader">
+      <NameLabel 
+        name={`${food} for: ${name}`} 
+      />
+      <div className="closeMonitorButton" onClick={(e) => closeHandler(id)}>
+        <img src={closeButton} alt='X' />
+      </div>
     </div>
-    <TemperatureHistory valueArray={historyArray} />
-    <div className="push-right">
-      <Readout className="smallest" value={ovenTemperature} />
+    <div className="monitorBody">
+      <div className="monitorTemperatures">
+        <Readout className="" deemphasize={true} value={ovenTemperature} label="Target" />
+        <Readout className="" emphasize={true} value={foodTemperature} label="Current" />
+        <TemperatureHistory valueArray={historyArray} />
+      </div>
+      <div className="monitorGraph">
+        <img src={gradient} alt="" />
+      </div>
     </div>
   </div>
 );

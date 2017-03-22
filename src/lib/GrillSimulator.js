@@ -22,7 +22,7 @@ function * cookFood (foodTemp, ovenTemp, factor=COOK_FACTOR) {
 }
 
 class Sensor {
-  constructor(sampleGenerator, updateCallback, interval=1000) {
+  constructor(sampleGenerator, updateCallback, interval=300) {
     this.values = [];
     this.sampleGenerator = sampleGenerator;
     this.sampleInterval = null;

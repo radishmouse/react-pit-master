@@ -5,6 +5,7 @@ import FoodChooserForm from './FoodChooserForm';
 import Monitor from '../containers/Monitor';
 import MonitorPanel from '../containers/MonitorPanel';
 
+import pitmasterLogo from './pitmaster.png';
 import './PitMaster.css';
 
 import {
@@ -34,7 +35,6 @@ class PitMaster extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {
-
     [
         {
           orderName: 'Mike',
@@ -82,21 +82,26 @@ class PitMaster extends React.Component {
   render() {
     return (
       <div className="pitmaster">
-        <h1>PitMaster</h1>
+        <h1>
+          <img src={pitmasterLogo} alt="pitmaster" />
+        </h1>
         <FoodChooserForm 
           foodChoices={FOOD_CHOICES}
           submitHandler={this._addOrder}
         />
 
-        <MonitorPanel orderArray={
-          this.state.orders.map((order) => ({
-            key: order.id,
-            name: order.orderName,
-            food: order.foodChoice,
-            foodTemperature: order.current,
-            historyArray: order.history,
-            ovenTemperature: tempsForFood(order.foodChoice).oven
-          }))
+        <MonitorPanel 
+          closeHandler={this._removeOrder}
+          orderArray={
+            this.state.orders.map((order) => ({
+              key: order.id,
+              id: order.id,
+              name: order.orderName,
+              food: order.foodChoice,
+              foodTemperature: order.current,
+              historyArray: order.history,
+              ovenTemperature: tempsForFood(order.foodChoice).oven
+            }))
         } />
       </div>
     );
@@ -115,6 +120,22 @@ class PitMaster extends React.Component {
     });
     order.sensor.start();
   }
+
+  _removeOrder = (id) => (
+    this.setState({
+      orders: this.state.orders.filter((order) => {
+        let shouldStay = order.id !== id;
+        if (!shouldStay) {
+          order.sensor.stop();
+        }
+        return shouldStay;
+      })
+    })
+  )
+
+  _totalCurrentTemperature = () => (
+    this.state.orders.reduce((accumulator, {current}) => (accumulator + current), 0)
+  )
 
   _updateTemperatures = (id) => {
     this.setState({

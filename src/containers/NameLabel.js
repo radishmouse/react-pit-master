@@ -9,6 +9,11 @@ as i type, it updates the "customer"
 associated with this "order"
 */
 
+const capitalizeFirstLetter = (word) => (
+  (new String(word.substring(0, 1))).toUpperCase() + 
+  word.substring(1)
+);
+
 const NameLabel = ({
   name, 
   changeHandler, 
@@ -23,7 +28,7 @@ const NameLabel = ({
       onChange={(e) => changeHandler(_valueFrom(e))}
       ref={getRef}
     />
-  : <span>{name}</span>
+  : <span>{capitalizeFirstLetter(name)}</span>
 );
 
 const _valueFrom = (e) => {

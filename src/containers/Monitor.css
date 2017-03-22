@@ -1,15 +1,55 @@
 
 .monitor {
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: slategray;
   color: lightgrey;
   flex: 0 1 auto;
-  width: 200px;
-  max-width: 200px;
-  padding: 8px;
+  width: 368px;
+  max-width: 368px;
   display: flex;
   flex-direction: column;
-  margin: 8px;
+  margin: 48px;
+  font-family: LucidaGrande;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  color: #4a4a4a;
+  background-color: white;
+}
+.monitorHeader {
+  border-radius: 8px;
+  background-color: #4a4a4a; 
+  width: 368px;
+  max-width: 368px;
+  padding-left: 33px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: white;
+}
+.monitorBody {
+  display: flex;
+  justify-content: space-between;
+}
+
+.monitorGraph {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 34px;
+}
+.monitorTemperatures {
+  padding-top: 16px;
+}
+.closeMonitorButton {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-right: 33px;
 }
 
 .push-right {
