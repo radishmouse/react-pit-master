@@ -41,6 +41,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   padding-right: 34px;
+  position: relative;
 }
 .monitorTemperatures {
   padding-top: 16px;
@@ -58,4 +59,15 @@
 
 .center {
   align-self: center;
+}
+
+.arrow {
+  position: absolute;
+  right: 72px;
+
+/* lowest */
+  bottom: 18px; 
+
+  /* highest */
+  /*bottom: 178px;*/
 }
