@@ -54,7 +54,7 @@ const tempsForFood = (key) => ({
 });
 const cookFactorForFood = (key) => RECIPES[key].factor;
 
-const ROOM_TEMP = 65;
+const ROOM_TEMP = 45;
 
 export { 
   FOOD_CHOICES, 

@@ -40,7 +40,7 @@
 .monitorGraph {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-right: 34px;
+  padding-right: 30px;
   position: relative;
 }
 .monitorTemperatures {
@@ -63,11 +63,13 @@
 
 .arrow {
   position: absolute;
-  right: 72px;
+  /*right: 72px;*/
 
 /* lowest */
-  bottom: 18px; 
+  /*bottom: 18px; */
 
   /* highest */
   /*bottom: 178px;*/
+  transition: all 1s ease-in-out;
+  transform: translate3d(-62px, 5px, 0);
 }

@@ -9,9 +9,9 @@ import whiteArrow from './white-arrow.svg';
 import blueArrow from './blue-arrow.svg';
 import './Monitor.css';
 
-const targetArrow = {
-  bottom: '178'
-};
+// const targetArrow = {
+  // bottom: '178px'
+// };
 
 const Monitor = ({
   id,
@@ -24,11 +24,18 @@ const Monitor = ({
   closeHandler
 }) => {
   const currentArrow = {
-    bottom: (foodTemperature / ovenTemperature) * 178
+    transform: `translate3d(-62px, ${(((ovenTemperature - foodTemperature) / ovenTemperature) * 150) + 7}px, 0)`
   };
+
+  let headerStyle = {};
+  if ((ovenTemperature - foodTemperature) < 10) {
+    headerStyle.color = 'red';
+  };
+
+
   return (
     <div className="monitor">
-      <div className="monitorHeader">
+      <div className="monitorHeader" style={headerStyle}>
         <NameLabel 
           name={`${food} for: ${name}`} 
         />
@@ -44,7 +51,7 @@ const Monitor = ({
         </div>
         <div className="monitorGraph">
           <img src={gradient} alt="" />
-          <img style={targetArrow} className="arrow" src={whiteArrow} alt="white arrow" />
+          <img className="arrow" src={whiteArrow} alt="white arrow" />
           <img style={currentArrow} className="arrow" src={blueArrow} alt="blue arrow" />
         </div>
       </div>
