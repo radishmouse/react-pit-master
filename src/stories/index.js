@@ -36,6 +36,7 @@ storiesOf('FoodChooser', module)
 storiesOf('Monitor', module)
   .add('static values', () => (
     <Monitor 
+      food={'yummy food'}
       name={'static text'}
       changeHandler={action('NameLabel')}
       foodTemperature={80.1}
