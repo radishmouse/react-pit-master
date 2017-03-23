@@ -27,22 +27,22 @@ const RECIPES = {
   'wings': {
     target: 165,
     oven: 300,
-    factor: 0.079
+    factor: 0.049
   },
   'veggie burger': {
     target: 130,
     oven: 300,
-    factor: 0.109
+    factor: 0.069
   },
   'portobello': {
     target: 130,
     oven: 280,
-    factor: 0.199
+    factor: 0.099
   },
   'tempeh': {
     target: 130,
     oven: 280,
-    factor: 0.18
+    factor: 0.11
   },
 };
 
@@ -54,7 +54,7 @@ const tempsForFood = (key) => ({
 });
 const cookFactorForFood = (key) => RECIPES[key].factor;
 
-const ROOM_TEMP = 45;
+const ROOM_TEMP = 65;
 
 export { 
   FOOD_CHOICES, 

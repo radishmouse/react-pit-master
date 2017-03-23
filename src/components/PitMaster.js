@@ -100,7 +100,7 @@ class PitMaster extends React.Component {
               food: order.foodChoice,
               foodTemperature: order.current,
               historyArray: order.history,
-              ovenTemperature: tempsForFood(order.foodChoice).oven
+              targetTemperature: tempsForFood(order.foodChoice).target
             }))
         } />
       </div>
@@ -111,7 +111,7 @@ class PitMaster extends React.Component {
     console.log(order)
     order.id = (new Date()).getTime();
     order.sensor = new Sensor(cookFood(ROOM_TEMP, 
-                                       tempsForFood(order.foodChoice).oven, 
+                                       tempsForFood(order.foodChoice).target, 
                                        cookFactorForFood(order.foodChoice)
                                       ), 
                               () => this._updateTemperatures(order.id));  

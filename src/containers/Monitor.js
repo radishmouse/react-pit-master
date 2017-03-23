@@ -19,16 +19,16 @@ const Monitor = ({
   food,
   foodTemperature,
   historyArray,
-  ovenTemperature,
+  targetTemperature,
   changeHandler,
   closeHandler
 }) => {
   const currentArrow = {
-    transform: `translate3d(-62px, ${(((ovenTemperature - foodTemperature) / ovenTemperature) * 150) + 7}px, 0)`
+    transform: `translate3d(-62px, ${(((targetTemperature - foodTemperature) / targetTemperature) * 150) + 7}px, 0)`
   };
 
   let headerStyle = {};
-  if ((ovenTemperature - foodTemperature) < 10) {
+  if ((targetTemperature - foodTemperature) < 10) {
     headerStyle.color = 'red';
   };
 
@@ -45,7 +45,7 @@ const Monitor = ({
       </div>
       <div className="monitorBody">
         <div className="monitorTemperatures">
-          <Readout className="" deemphasize={true} value={ovenTemperature} label="Target" />
+          <Readout className="" deemphasize={true} value={targetTemperature} label="Target" />
           <Readout className="" emphasize={true} value={foodTemperature} label="Current" />
           <TemperatureHistory valueArray={historyArray} />
         </div>
