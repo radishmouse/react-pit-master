@@ -1,7 +1,13 @@
 import React from 'react';
 import './Readout.css';
 
-const Readout = ({value=0, label='', className, emphasize=false, deemphasize=false}) => {
+const Readout = ({
+  value=0, 
+  label='', 
+  className, 
+  emphasize=false, 
+  deemphasize=false
+}) => {
   let formattedValue = typeof value === 'number' ? value.toFixed(2) 
                                                  : value;
   if (emphasize) {
