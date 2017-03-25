@@ -1,12 +1,18 @@
 
+
 # PitMaster
 
 This is an example React app built for JazzCon 2017.
 
 It inaccurately simulates cooking food while showing
-the current temperature, temperature history, and oven temperature.
+the current temperature, temperature history, and target temperature
+(Technically, the code shows it as "oven" temp, but...that's a typo.)
 
-## Installation
+## Slides from the talk
+
+Are included as a PDF in this repo.
+
+## Installation of dependencies
 
 After cloning, `cd` into directory and then either `npm install` or `yarn`.
 
