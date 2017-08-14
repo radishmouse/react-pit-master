@@ -3,15 +3,15 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 
 import '../index.css';
 
-import Readout from '../containers/Readout';
-import TemperatureHistory from '../containers/TemperatureHistory';
-import NameLabel from '../containers/NameLabel';
-import Monitor from '../containers/Monitor';
+import Readout from '../components/Readout';
+import TemperatureHistory from '../components/TemperatureHistory';
+import NameLabel from '../components/NameLabel';
+import Monitor from '../components/Monitor';
 
-import FoodChooser from '../containers/FoodChooser';
-import FoodChooserForm from '../components/FoodChooserForm';
+import FoodChooser from '../components/FoodChooser';
+import FoodChooserForm from '../containers/FoodChooserForm';
 
-import PitMaster from '../components/PitMaster';
+import PitMaster from '../containers/PitMaster';
 
 import {FOOD_CHOICES} from '../config';
 
@@ -22,7 +22,7 @@ storiesOf('PitMaster App', module)
 
 storiesOf('FoodChooserForm', module)
   .add('from config', () => (
-    <FoodChooserForm 
+    <FoodChooserForm
       foodChoices={FOOD_CHOICES}
       submitHandler={(v) => console.log(`story for food chooser received: ${v}`)}
     />
@@ -35,19 +35,19 @@ storiesOf('FoodChooser', module)
 
 storiesOf('Monitor', module)
   .add('static values', () => (
-    <Monitor 
+    <Monitor
       food={'yummy food'}
       name={'static text'}
       changeHandler={action('NameLabel')}
       foodTemperature={80.1}
-      valueArray={[79.8, 77.2, 70.9]} 
+      valueArray={[79.8, 77.2, 70.9]}
       ovenTemperature={240.3}
     />
   ));
 
 storiesOf('NameLabel', module)
   .add('static text', () => (
-    <NameLabel 
+    <NameLabel
       name={'static text'}
       changeHandler={action('NameLabel')}
     />
