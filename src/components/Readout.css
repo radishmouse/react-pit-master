@@ -1,0 +1,35 @@
+.readout {
+  font-family: LucidaGrande;
+  font-size: 18px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+}
+
+.emphasize {
+  color: #095bec;
+  font-size: 36px;
+}
+
+.deemphasize {
+  color: #9b9b9b;
+}
+
+.readoutLabel {
+  display: inline-block;
+  text-align: right;
+  width: 120px;
+  margin-right: 5px;
+}
+
+.large {
+}
+.medium {
+  font-size: 14px;
+}
+.small {
+  font-size: 12px;
+}
+.smallest {
+  font-size: 10px;
+}

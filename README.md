@@ -2,7 +2,10 @@
 
 # PitMaster
 
-This is an example React app built for JazzCon 2017.
+This is an example React app originally built for JazzCon 2017.
+
+Its primary purpose is to illustrate React's primary abstractions and techniques (components, JSX, Virtual DOM, Modules, and Immutability) 
+in terms of core JavaScript (functions, objects, modules, array methods)
 
 It inaccurately simulates cooking food while showing
 the current temperature, temperature history, and target temperature
